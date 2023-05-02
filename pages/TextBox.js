@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import styles from '../styles/TextBox.module.css';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 
 export function TextBox() {
   const [messages, setMessages] = useState([]);
@@ -27,7 +30,9 @@ export function TextBox() {
       </div>
       <form onSubmit={handleSendMessage} className={styles.form}>
         <input type="text" name="message" placeholder="Type a message..." className={styles.input} />
-        <button type="submit" className={styles.sendButton}>Send</button>
+        <button type="submit" className={styles.sendButton}>
+          <FontAwesomeIcon icon={faPaperPlane} />
+        </button>
       </form>
     </div>
   );
