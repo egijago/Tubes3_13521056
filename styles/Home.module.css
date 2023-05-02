@@ -1,0 +1,28 @@
+.column {
+  height: 100vh;
+  display: inline-block;
+}
+
+.sidebar {
+  background-color: #0d0d0e;
+  width: 270px;
+}
+
+.home {
+  background-color: #121212;
+  width: calc(100% - 270px);
+  height: 100vh;
+  display: inline-block;
+  overflow-y: scroll;
+}
+
+/* .home-atas {
+  background-color: #121212;
+  height: 600px;
+  width: 100vw;
+}
+
+.home-bawah {
+  background-color: #2d2d2d15;
+  height: 100%;
+} */
