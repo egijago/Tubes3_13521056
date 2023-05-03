@@ -84,6 +84,14 @@ transition: .7s;
   display: none;
 }
 
+.sidebar .sidebarBottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin-bottom: 20px;
+}
+
 .sidebar .slider {
   position: absolute;
   cursor: pointer;

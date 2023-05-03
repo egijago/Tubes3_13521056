@@ -2,10 +2,19 @@ import React, { useState } from "react";
 import sidebar from '../styles/SideBar.module.css'
 
 export const SideBar = () => {
-  const [isOn, setIsOn] = useState(false);
-
-  const handleToggle = () => {
-    setIsOn(prev => !prev);
+  const [isOn1, setIsOn1] = useState(false);
+  const [isOn2, setIsOn2] = useState(false);
+ 
+  const handleToggle1 = () => {
+    if (!isOn2) {
+      setIsOn1(prev => !prev);
+    }
+  };
+  
+  const handleToggle2 = () => {
+    if (!isOn1) {
+      setIsOn2(prev => !prev);
+    }
   };
 
   return (
@@ -22,15 +31,19 @@ export const SideBar = () => {
         <ul>
           <li>
             <label className={sidebar.switch}>
-              <input type="checkbox" checked={isOn} onChange={handleToggle} />
+              <input type="checkbox" checked={isOn1} onChange={handleToggle1} />
               <span className={sidebar.slider}></span>
             </label>
+            <span>   BM</span>
           </li>
+        </ul>
+        <ul>
           <li>
             <label className={sidebar.switch}>
-              <input type="checkbox" checked={isOn} onChange={handleToggle} />
+              <input type="checkbox" checked={isOn2} onChange={handleToggle2} />
               <span className={sidebar.slider}></span>
             </label>
+            <span>  KMP</span>
           </li>
         </ul>
       </div>
