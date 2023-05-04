@@ -1,0 +1,1 @@
+    // let query = 'tambahkan pertanyaan foo dengan jawaban bar';
