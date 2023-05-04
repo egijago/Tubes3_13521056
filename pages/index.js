@@ -1,6 +1,5 @@
 import Head from 'next/head';
 import { SideBar } from "./SideBar";
-import { TextBox } from './TextBox';
 import styles from '../styles/Home.module.css';
 import { ChatBox } from './ChatBox';
 
@@ -14,7 +13,7 @@ export default function Home() {
           body {
             margin: 0;
             padding: 0;
-            overflow: hidden; /* prevent scrolling */
+            overflow: hidden; /*scrolling */
           }
         `}</style>
       </Head>
@@ -23,7 +22,7 @@ export default function Home() {
       </div>
       <div className={`${styles.column} ${styles['home']}`}>
         <div className={styles.bottomBarContainer}>
-          <TextBox />
+          <ChatBox />
         </div>
       </div>
     </div>

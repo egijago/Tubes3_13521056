@@ -1,31 +1,63 @@
-/* 
+
 .TextBox {
+    background-image: linear-gradient(to top, transparent 90%,  #8383832a );
     position: absolute;
     top: 620px;
-    width: 300px;
-    height: 60px;
-    padding-left: 270px;
+    width: 100%;
+    height: 100%;
+    padding-left: 290px;
+    border-top: solid 1px white;
   }
-  
-.TextBox input {
+
+.form {
+    display: flex;
+    align-items: center;
+    margin-top: 1rem;
+    width: 670px;
+  }
+    
+
+.input {
+    flex: 1;
     width: 670px;
     height: 50px;
-    background-color: #212121;
+    background-color: #D9D9D9;
     border: none;
     border-radius: 30px;
     outline: none;
     }
 
-.TextBox input[type="text"] {
-    color: #D9D9D9;
+.input[type="text"] {
+    color: #121212;
   }
   
-.TextBox input[placeholder] {
+.input[placeholder] {
 padding-left: 20px;
 font-size: 17px;
-
 }
- */
+
+.sendButton {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  background-color: #06C755;
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.sendButton:hover {
+  background-color: #06c75693;
+}
+
+.faPaperPlane{
+  color: #D9D9D9;
+  height: 20px;
+}
+
+
+
 
 
  /* .textbox {
@@ -99,7 +131,7 @@ font-size: 17px;
 
 
 
-.chatbox {
+/* .chatbox {
   background-color: transparent;
   height: 100%;
   display: flex;
@@ -154,12 +186,12 @@ font-size: 17px;
 
 .sendButton {
   position: relative;
-  width: 20px;
-  height: 20px;
+  width: 100px;
+  height: 100px;
   background-color: #4CAF50;
   color: white;
   border: none;
-  border-radius: 100px;
+  border-radius: 20px;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
@@ -168,8 +200,10 @@ font-size: 17px;
   background-color: #3e8e41;
 }
 
-
-
+.sendButton svg {
+  font-size: 20px;
+}
+ */
 
 
 
