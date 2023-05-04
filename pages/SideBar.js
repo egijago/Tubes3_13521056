@@ -6,15 +6,17 @@ export const SideBar = () => {
   const [isOn2, setIsOn2] = useState(false);
  
   const handleToggle1 = () => {
-    if (!isOn2) {
-      setIsOn1(prev => !prev);
+    if (isOn2) {
+      setIsOn2(false);
     }
+    setIsOn1(prev => !prev);
   };
   
   const handleToggle2 = () => {
-    if (!isOn1) {
-      setIsOn2(prev => !prev);
+    if (isOn1) {
+      setIsOn1(false);
     }
+    setIsOn2(prev => !prev);
   };
 
   return (
@@ -22,9 +24,9 @@ export const SideBar = () => {
       <div className={sidebar.sidebarTop}>
         <ul>
           <li><button className={sidebar.newButton}>+ New Chat</button></li>
-          <li><button>Ilham Tampan</button></li>
-          <li><button>Ilham Terlalu Tampan</button></li>
-          <li><button>Ilham Sangat Tampan</button></li>
+          <li><button>a</button></li>
+          <li><button>b</button></li>
+          <li><button>c</button></li>
         </ul>
       </div>
       <div className={sidebar.sidebarBottom}>
@@ -34,7 +36,7 @@ export const SideBar = () => {
               <input type="checkbox" checked={isOn1} onChange={handleToggle1} />
               <span className={sidebar.slider}></span>
             </label>
-            <span>   BM</span>
+            <span className={isOn1 ? sidebar.labelOn : sidebar.labelOff}>   BM</span>
           </li>
         </ul>
         <ul>
@@ -43,7 +45,7 @@ export const SideBar = () => {
               <input type="checkbox" checked={isOn2} onChange={handleToggle2} />
               <span className={sidebar.slider}></span>
             </label>
-            <span>  KMP</span>
+            <span className={isOn2 ? sidebar.labelOn : sidebar.labelOff}>  KMP</span>
           </li>
         </ul>
       </div>

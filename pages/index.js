@@ -1,7 +1,9 @@
 import Head from 'next/head';
 import { SideBar } from "./SideBar";
+import { TextBox } from './TextBox';
 import styles from '../styles/Home.module.css';
 import { ChatBox } from './ChatBox';
+// import { ChatBox } from './ChatBox';
 
 export default function Home() {
   return (

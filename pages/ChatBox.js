@@ -1,10 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import foo from './foo';
 
 import styles from '../styles/ChatBox.module.css';
 
-export function ChatBox() {
+export function ChatBox({id}) {
   const [messages, setMessages] = useState([]);
   const messageContainerRef = useRef(null);
 
@@ -30,7 +31,7 @@ export function ChatBox() {
 
   return (
     <div>
-      <div className={styles.chatbox}>
+      <div id={id}className={styles.chatbox}>
         <div ref={messageContainerRef} className={styles.messageContainer}>
           {messages.map((msg, idx) => (
             <div key={idx} className={styles.bubbleContainer}>
@@ -38,7 +39,7 @@ export function ChatBox() {
                 {msg.message}
               </div>
               <div className={`${styles.bubble} ${msg.sender === 'me' ? styles.left : styles.right}`}>
-              {msg.message}
+                {foo()}
               </div>
             </div>
           ))}

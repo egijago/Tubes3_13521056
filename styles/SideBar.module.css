@@ -8,6 +8,7 @@
     overflow-x: hidden;
     padding-top: 20px;
     transition: all 0.3s ease-in-out;
+    border-radius: 0px 20px 40px 0px;
 
   }
   
@@ -133,6 +134,20 @@ transition: .7s;
   transform: translateX(26px);
 }
 
+.labelOn {
+  color: #D9D9D9;
+  font-family: Arial, Helvetica, sans-serif;
+  padding-left: 10px;
+  transition: .7s;
+}
+
+.labelOff{
+  color: rgba(128, 128, 128, 0.481);
+  font-family: Arial, Helvetica, sans-serif;
+  padding-left: 10px;
+  transition: .7s;
+}
+
 /* 
 .sidebarTop {
   background-color: #06C755;
@@ -147,3 +162,5 @@ transition: .7s;
   display: flex;
   background-color: #F0F0F0;
 } */
+
+
