@@ -147,5 +147,4 @@ class Prompt {
     }
 }
 
-let myGPT = new Prompt();
-myGPT.start();
+module.exports = prompt;
