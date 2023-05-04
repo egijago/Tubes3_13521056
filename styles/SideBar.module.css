@@ -78,6 +78,7 @@ transition: .7s;
   height: 24px;
   margin-left: 10px;
   margin-top: 10px;
+  bottom: -5px;
 }
 
 .sidebar .switch input {
@@ -86,7 +87,7 @@ transition: .7s;
 
 .sidebar .sidebarBottom {
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   left: 0;
   right: 0;
   margin-bottom: 20px;
