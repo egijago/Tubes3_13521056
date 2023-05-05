@@ -4,12 +4,17 @@ class MathEvaluator {
         this.operandStack = [];
         this.operatorStack = [];
         this.token = expression.match(/\d+|[+\-*/()]/g);
+        this.precedence = {
+            '+': 1,
+            '-': 1,
+            '*': 2,
+            '/': 2,
+        };
     }
 
-    
     doOperation() {
-        let leftOperand = this.operandStack.pop();
         let rightOperand = this.operandStack.pop();
+        let leftOperand = this.operandStack.pop();
         let operator = this.operatorStack.pop();
         switch (operator) {
             case '+':
@@ -42,9 +47,8 @@ class MathEvaluator {
                 }
                 this.operatorStack.pop();
             } else {
-                while ( this.operatorStack.length > 0
-                        && ((this.operatorStack[this.operatorStack.length - 1] === '/') || 
-                            (this.operatorStack[this.operatorStack.length - 1] === '*'))
+                while ( this.operatorStack.length > 0 &&
+                        this.precedence[this.operatorStack[this.operatorStack.length - 1]] >= this.precedence[currToken]
                       ) {
                     this.doOperation();
                 }

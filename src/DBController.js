@@ -3,10 +3,10 @@ const mysql = require('sync-mysql');
 class DBController {
     constructor() {
         this.connection = new mysql({
-        host     : 'localhost',
-        user     : 'root',
-        password : '1010',
-        database : 'chatbot'
+        host     : 'sql12.freesqldatabase.com',
+        user     : 'sql12616139',
+        password : 'aPJYRLhvJy',
+        database : 'sql12616139'
         });
     }
 
@@ -19,11 +19,11 @@ class DBController {
         return this.connection.query(query);
     }
 
-    getHistory(user) {
+    getHistory(chat) {
         let query = `
             SELECT question, answer 
             FROM history
-            WHERE user = ${user};
+            WHERE id_chat = ${chat};
         `;
         
         return this.connection.query(query);
@@ -77,24 +77,49 @@ class DBController {
         return this.connection.query(query);
     }
 
-    deleteRecord(user) {
+    insertRecord(chat, question, answer) {
+        if (question === undefined 
+            || answer === undefined
+            || question.charCodeAt(0) <= 20) {
+            return;
+        }
+        let validate = this.connection.query(`
+            SELECT * FROM chat WHERE id_chat = ${chat};
+        `);
+        if (validate.length == 0) {
+            this.connection.query(`
+            INSERT INTO chat(topic)
+            VALUE ('${question}'); 
+        `);
+        }
+
+
         let query = `
-            UPDATE qna 
-            SET answer = '${answer}'
-            WHERE id_qna = '${user}';
+            INSERT INTO history(id_chat, question, answer) 
+            VALUES ('${chat}', '${question}', '${answer}');
         `;
         
         return this.connection.query(query);
     }
 
-    insertRecord(user, question, answer) {
+    getChat() {
         let query = `
-            INSERT INTO history(user, question, answer) 
-            VALUES ('${user}', '${question}', '${answer}');
+            SELECT *
+            FROM chat;
         `;
         
         return this.connection.query(query);
     }
+
+    getMaxChatId() {
+        let query = `
+            SELECT MAX(id_chat) as id_chat
+            FROM chat;
+        `;
+        return this.connection.query(query);
+    }
+
+
 
 }
 

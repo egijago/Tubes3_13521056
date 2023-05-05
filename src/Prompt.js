@@ -18,8 +18,9 @@ class Prompt {
     static DATE_EXP = /^(\d{1,2})\/(\d{1,2})\/(\d{4})$/;
 
     constructor() {
-        this.user = 0;
         this.db = new DBController();
+        const userState = this.db.getChat();
+        this.chat = userState[userState.length - 1].id_chat;
         this.algorithm = Prompt.BM;
     }
     
@@ -64,6 +65,9 @@ class Prompt {
 
     processQuestion(query) {
         this.tuples = this.db.getQnA();
+        if (this.tuples.length == 0) {
+            return "Database pertanyaan kosong!";
+        }
         let question;
         if (this.algorithm == Prompt.KMP) {
             question = new KMP(query);
@@ -93,7 +97,7 @@ class Prompt {
             let response = (`Pertanyaan ${question.pattern} tidak ditemukan di database, apakah maksud Anda: \n`);
             for (let i = 0; i < limit; i++) {
                 const bestIdx = matchScore[i][0];
-                response += ((i+1).toString() + " " + this.tuples[bestIdx].question + ((i == limit - 1)? '' :'\n'));
+                response += ((i+1).toString() + ") " + this.tuples[bestIdx].question + ((i == limit - 1)? '' :'\n'));
             }
             return response;
         }
@@ -113,7 +117,6 @@ class Prompt {
         let date_query = query.match(Prompt.DATE_EXP);
         if (date_query) {
             return this.processDate(date_query);
-            
         } 
         let math_query = query.match(Prompt.MATH_EXP);
         if (math_query) {
@@ -122,21 +125,56 @@ class Prompt {
         return this.processQuestion(query);
     }
 
-    processQueries(queries) {
-        queries = queries.toLowerCase().split('?');
-        if (queries.length == 1) {
-            console.log(this.processQuery(queries[0].trim()))
-            return;
+    systemQuery(query) {
+        if (query === undefined) {
+            return "oke";
+        }
+        const command = query.charCodeAt(0);
+        switch (command) {
+            case (1) :
+                const chat_id = parseInt(query.slice(1));
+                console.log(chat_id);
+                this.chat = chat_id;
+                return 'ok';
+            case (2) :
+                return this.db.getMaxChatId();
+            case (6) :
+                this.algorithm = (this.algorithm == 1) ? 0 : 1;
+                return 'ok';
+            case (7) :
+                return this.db.getHistory(this.chat);
+            case (9) :
+                console.log(this.db.getChat());
+                return this.db.getChat();
+        }
+        if (query == 'status') {
+            return (`chat: ${this.chat}, algorithm: ${this.algorithm == Prompt.KMP? 'KMP' : 'BM'}`);
+        }
+        return 0;
+    }
+
+    processQueries(inputQueries) {
+        const systemResponse = this.systemQuery(inputQueries);
+        if (systemResponse !== 0) {
+            return systemResponse;
         }
         let response = "";
-        let query;
-        for (let i = 0; i < queries.length - 2; i++) {
-            query = queries[i];
-            response += this.processQuery(query.trim()) + '\n';
+        const queries = inputQueries.toLowerCase().split('?');
+        if (queries.length == 1) {
+            response = (this.processQuery(queries[0].trim()));   
+        } else {
+            let query;
+            for (let i = 0; i < queries.length - 2; i++) {
+                query = queries[i];
+                response += this.processQuery(query.trim()) + '\n';
+            }
+            query = queries[queries.length - 2];
+            response += this.processQuery(query.trim());
+            
+            this.db.insertRecord(this.chat, inputQueries, )
         }
-        query = queries[queries.length - 2];
-        response += this.processQuery(query.trim());
-        return (response);
+        this.db.insertRecord(this.chat, inputQueries, response);
+        return response;
     }
 
     start() {
@@ -147,4 +185,4 @@ class Prompt {
     }
 }
 
-module.exports = prompt;
+module.exports = Prompt;

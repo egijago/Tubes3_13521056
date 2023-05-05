@@ -11,7 +11,15 @@ CREATE TABLE `qna` (
 
 CREATE TABLE `history` (
     `id_history` INT AUTO_INCREMENT,
-    `user` INT,
+    `id_chat` INT,
     `question` TEXT,
     `answer` TEXT,
     PRIMARY KEY (`id_history`)); 
+
+CREATE TABLE `chat` (
+    `id_chat` INT AUTO_INCREMENT,
+    `topic` TEXT,
+    PRIMARY KEY (`id_chat`));
+
+INSERT INTO `chat` (topic)
+VALUE ('Welcome!');
