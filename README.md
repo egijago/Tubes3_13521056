@@ -21,7 +21,7 @@
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 
-## Technologies Used
+## Technologies Used/ Requirements
 - Next.js   (https://nextjs.org/docs/getting-started/installation)
 - Node.js   (https://nodejs.org/en/download)
 - Mysql     (https://www.mysql.com/downloads/)
@@ -43,12 +43,18 @@ List the ready features here:
 
 
 ## Usage
-- Buka link vercel app diatas 
+### Alternativ 1: 
+- Buka [link vercel app ini](https://tubes3-13521056-fe.vercel.app/)
+#### nb: apabila terdapat kegagalan/kejanggalan pada hosting baik pada back-end, front-end atau database, harap gunakan alternativ 2.
+### Alternativ 2:
 - Pastikan semua requirements telah tersedia
-- Apabila tidak bisa maka clone lalu masuk branch local host 
-- Hapus node module dan package-lock.json
-- Masukkan "npm install di terminal"
-- Lalu jalankan "npm run dev"
+- clone repository back-end ini dengan `git clone https://github.com/egijago/Tubes3_13521056` lalu buka branch local-hosting
+- clone repository front-end dengan `git clone https://github.com/egijago/Tubes3_13521056_fe` lalu buka branch local-hosting
+- setup database mysql lokal dengan memasukan query pada 'setup.sql'
+- pastikan credential pada './src/DBController' benar
+- masukkan `npm install` pada repository back-end dan front-end untuk menginstall dependencies, jika gagal hapus node_module dan package-lock.json
+- masukkan `node index.js` pada repository back-end dan `npm run dev` pada repository front-end
+- program dapat dilihat http://localhost:3000/
 
 
 ## Project Status
