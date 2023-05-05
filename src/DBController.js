@@ -1,12 +1,13 @@
 const mysql = require('sync-mysql');
 
+
 class DBController {
     constructor() {
         this.connection = new mysql({
-        host     : 'sql12.freesqldatabase.com',
-        user     : 'sql12616139',
-        password : 'aPJYRLhvJy',
-        database : 'sql12616139'
+        host     : 'localhost',
+        user     : 'root',
+        password : 'root',
+        database : 'chatbot'
         });
     }
 
@@ -92,7 +93,6 @@ class DBController {
             VALUE ('${question}'); 
         `);
         }
-
 
         let query = `
             INSERT INTO history(id_chat, question, answer) 

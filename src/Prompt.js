@@ -25,12 +25,22 @@ class Prompt {
     }
     
     processInsert(insert_query) {
-        const question = insert_query[1];
-        const answer = insert_query[2]; 
-        const questionId = this.db.getQnAId(question)[0];
-        if (questionId != undefined) {
-            this.db.setAnswer(questionId.id_qna, answer);
-            return (`Pertanyaan ${question} sudah ada! jawaban diupdate ke ${answer} `);
+        let question = insert_query[1];
+        let answer = insert_query[2]; 
+        
+        // get id_qna if any match
+        question = question.toLowerCase();
+        let questions = this.db.getQnA();
+        let qPattern = new KMP(question);
+        let match = false;
+        let i;
+        for (i = 0; i < questions.length && !match; i++) {
+            match = (qPattern.match(questions[i].question));
+        }
+        if (match) {
+            const questionId = questions[i - 1].id_qna;
+            this.db.setAnswer(questionId, answer);
+            return (`Pertanyaan ${question}(${questions[i - 1].question}) sudah ada! jawaban diupdate ke ${answer} `);
         } else {
             this.db.insertQnA(question, answer);
             return (`Pertanyaan ${question} telah ditambah `);
@@ -38,11 +48,21 @@ class Prompt {
     }
 
     processDelete(delete_query) {
-        const question = delete_query[1];
-        const questionId = this.db.getQnAId(question)[0];
-        if (questionId != undefined) {
-            this.db.deleteQnA(questionId.id_qna);
-            return (`Pertanyaan ${question} telah dihapus `);
+        let question = delete_query[1];
+
+        // get id_qna if any match
+        question = question.toLowerCase();
+        let questions = this.db.getQnA();
+        let qPattern = new KMP(question);
+        let match = false;
+        let i;
+        for (i = 0; i < questions.length && !match; i++) {
+            match = (qPattern.match(questions[i].question));
+        }
+        if (match) {
+            const questionId = questions[i - 1].id_qna;
+            this.db.deleteQnA(questionId);
+            return (`Pertanyaan ${question}(${questions[i - 1].question}) telah dihapus `);
         } else {
             return (`Tidak ada pertanyaan ${question} pada database `);
         }

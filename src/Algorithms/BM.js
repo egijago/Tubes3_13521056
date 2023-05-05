@@ -1,4 +1,3 @@
-const { Module } = require('module');
 const PatternMatcher = require('./PatternMatcher');
 
 class BM extends PatternMatcher {
