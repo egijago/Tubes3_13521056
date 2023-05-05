@@ -33,7 +33,7 @@ class KMP extends PatternMatcher{
         let patternLength = this.pattern.length;
         let contentLength = content.length;
         
-        if (patternLength >= contentLength) {
+        if (patternLength > contentLength) {
             return false;
         }
         

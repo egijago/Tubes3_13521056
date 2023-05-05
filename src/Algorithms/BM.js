@@ -31,7 +31,7 @@ class BM extends PatternMatcher {
         let patternLength = this.pattern.length;
         let contentLength = content.length;
         
-        if (patternLength >= contentLength) {
+        if (patternLength > contentLength) {
             return false;
         }
         content = content.toLowerCase();
