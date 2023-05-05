@@ -53,7 +53,7 @@ class Prompt {
         // get id_qna if any match
         question = question.toLowerCase().trim();
         let questions = this.db.getQnA();
-        let qPattern = new KMP(question);
+        let qPattern = new BM(question);
         let match = false;
         let i;
         for (i = 0; i < questions.length && !match; i++) {
