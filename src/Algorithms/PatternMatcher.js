@@ -8,6 +8,7 @@ class PatternMatcher {
         function to find lavenshteinDistance of transforming the pattern to 
         given content or otherwise
         */
+        content = content.toLowerCase();
         const pattern = this.pattern;
         const patternLength = pattern.length;
         const contentLength = content.length;
