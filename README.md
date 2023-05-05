@@ -38,7 +38,7 @@ List the ready features here:
 
 
 ## Screenshots
-![Example screenshot](img\gptathome.png)
+![Example screenshot](./img/gptathome.png)
 <!-- If you have screenshots you'd like to share, include them here. -->
 
 
