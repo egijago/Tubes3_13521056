@@ -40,6 +40,7 @@ class DBController {
     }
 
     setAnswer(id, answer) {
+        answer = answer.trim();
         let query = `
             UPDATE qna 
             SET answer = '${answer}'
@@ -59,6 +60,8 @@ class DBController {
     }
 
     insertQnA(question, answer) {
+        question = question.trim();
+        answer = answer.trim();
         let query = `
             INSERT INTO qna (question, answer)
             VALUES ('${question}', '${answer}');

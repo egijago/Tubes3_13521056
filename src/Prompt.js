@@ -29,13 +29,13 @@ class Prompt {
         let answer = insert_query[2]; 
         
         // get id_qna if any match
-        question = question.toLowerCase();
+        question = question.toLowerCase().trim();
         let questions = this.db.getQnA();
         let qPattern = new KMP(question);
         let match = false;
         let i;
         for (i = 0; i < questions.length && !match; i++) {
-            match = (qPattern.match(questions[i].question));
+            match = (qPattern.match(questions[i].question.trim()));
         }
         if (match) {
             const questionId = questions[i - 1].id_qna;
@@ -51,13 +51,13 @@ class Prompt {
         let question = delete_query[1];
 
         // get id_qna if any match
-        question = question.toLowerCase();
+        question = question.toLowerCase().trim();
         let questions = this.db.getQnA();
         let qPattern = new KMP(question);
         let match = false;
         let i;
         for (i = 0; i < questions.length && !match; i++) {
-            match = (qPattern.match(questions[i].question));
+            match = (qPattern.match(questions[i].question.trim()));
         }
         if (match) {
             const questionId = questions[i - 1].id_qna;
