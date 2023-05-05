@@ -4,5 +4,18 @@
     "express": "^4.18.2",
     "prompt-sync": "^4.2.0",
     "sync-mysql": "^3.0.1"
-  }
+  },
+  "name": "tubes3_13521056",
+  "engines": {
+    "node": "14.x"
+  },
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC"
 }
