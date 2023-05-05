@@ -133,7 +133,6 @@ class Prompt {
         switch (command) {
             case (1) :
                 const chat_id = parseInt(query.slice(1));
-                console.log(chat_id);
                 this.chat = chat_id;
                 return 'ok';
             case (2) :
@@ -144,7 +143,6 @@ class Prompt {
             case (7) :
                 return this.db.getHistory(this.chat);
             case (9) :
-                console.log(this.db.getChat());
                 return this.db.getChat();
         }
         if (query == 'status') {
@@ -185,4 +183,6 @@ class Prompt {
     }
 }
 
+// let p = new Prompt();
+// p.processQueries('berapa ?');
 module.exports = Prompt;

@@ -37,6 +37,7 @@ class KMP extends PatternMatcher{
             return false;
         }
 
+        content = content.toLowerCase();
         let contentPointer = 0;
         let patternPointer = 0;
         let pattern = this.pattern;

@@ -11,6 +11,7 @@ class PatternMatcher {
         const pattern = this.pattern;
         const patternLength = pattern.length;
         const contentLength = content.length;
+        content = content.toLowerCase();
 
 
         /*
