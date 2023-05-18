@@ -4,9 +4,9 @@ class DBController {
     constructor() {
         this.connection = new mysql({
         host     : 'sql12.freesqldatabase.com',
-        user     : 'sql12616139',
-        password : 'aPJYRLhvJy',
-        database : 'sql12616139'
+        user     : 'sql12619160',
+        password : 'aEIht7eZEN',
+        database : 'sql12619160'
         });
     }
 
